@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools==82.0.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "breast-cancer-ga"
+version = "0.1.0"
+description = "Otimizacao de modelos de diagnostico por algoritmo genetico"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy==2.5.1",
+  "pandas==3.0.5",
+  "scikit-learn==1.9.0",
+  "matplotlib==3.11.1",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+

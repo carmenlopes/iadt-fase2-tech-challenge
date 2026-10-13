@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+src/breast_cancer_ga/__init__.py
+src/breast_cancer_ga/data.py
+src/breast_cancer_ga/fitness.py
+src/breast_cancer_ga/ga.py
+src/breast_cancer_ga/models.py
+src/breast_cancer_ga/reporting.py
+src/breast_cancer_ga.egg-info/PKG-INFO
+src/breast_cancer_ga.egg-info/SOURCES.txt
+src/breast_cancer_ga.egg-info/dependency_links.txt
+src/breast_cancer_ga.egg-info/requires.txt
+src/breast_cancer_ga.egg-info/top_level.txt
+tests/test_data_and_fitness.py
+tests/test_ga.py
+tests/test_models.py
