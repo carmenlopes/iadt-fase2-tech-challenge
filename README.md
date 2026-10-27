@@ -1,8 +1,8 @@
 # Tech Challenge - Fase 2: otimização de modelos de câncer de mama
 
-Continuação preservadora do projeto da Fase 1. O repositório mantém os notebooks, o CSV e as imagens originais e adiciona uma primeira versão funcional de um algoritmo genético para otimizar Regressão Logística e Árvore de Decisão.
+Continuação preservadora do projeto da Fase 1. O repositório mantém os notebooks, o CSV e as imagens originais e inclui um algoritmo genético para otimizar Regressão Logística e Árvore de Decisão, com seis experimentos completos, seleção por CV no treino e comparação final no teste reservado.
 
-Esta etapa reproduz os baselines, faz a busca somente no conjunto de treino e registra resultados de duas execuções pequenas. Ela **não** avalia no teste os indivíduos otimizados: essa comparação final pertence aos experimentos completos posteriores.
+As execuções pequenas documentadas abaixo serviram como verificações funcionais. O estudo final em `results/ga/final_study_20261025/` contém três configurações distintas para cada modelo, seleção de hiperparâmetros sem consultar o teste, avaliação final dos dois candidatos e análise comparativa.
 
 ## O que foi preservado da Fase 1
 
@@ -50,6 +50,8 @@ Executar os testes:
 python -m pytest
 ```
 
+Validação registrada em 25/10/2026: 11 testes passaram no ambiente virtual do projeto.
+
 Executar buscas pequenas em diretórios novos (o comando se recusa a sobrescrever um diretório não vazio):
 
 ```powershell
@@ -71,7 +73,7 @@ flowchart LR
     CV --> Pipe[Pipeline ajustado em cada fold]
     Pipe --> Fit[Recall maligno + métricas auxiliares]
     Fit --> History[JSON, CSV e gráfico]
-    Test --> Baseline[Somente baseline histórico]
+    Test --> FinalEval[Avaliação final após seleção]
 ```
 
 O objeto `GeneticAlgorithm` recebe apenas `X_train` e `y_train`; sua função fitness não possui acesso nem parâmetros de teste. A padronização da regressão está dentro do `Pipeline`, sendo reajustada exclusivamente na parte de treino de cada fold. A árvore usa um passo explícito `passthrough`, pois não requer escala.
@@ -109,11 +111,30 @@ Artefatos completos:
 
 O scikit-learn 1.9 ainda aceita o gene `penalty`, mas emite aviso de depreciação com remoção prevista para 1.10. Os avisos foram registrados; uma migração de representação deve ser feita antes de atualizar a biblioteca.
 
+## Estudo final e comparação
+
+Foram executadas três configurações distintas por modelo (populações 12, 20 e 32; 8, 12 e 16 gerações; seeds 42, 43 e 44). A seleção foi feita por recall médio em cinco folds no treino, com F1 e precision como desempates. Somente após fixar um candidato por modelo foi feita a avaliação no teste reservado.
+
+| Modelo | Experimento selecionado | Recall CV | Recall teste original → otimizado | FN teste original → otimizado |
+|---|---|---:|---:|---:|
+| Regressão Logística | `experiment_03` | 0,9647 | 0,9286 → 0,8810 | 3 → 5 |
+| Árvore de Decisão | `experiment_02` | 0,9412 | 0,8810 → 0,8333 | 5 → 7 |
+
+Neste split, os dois candidatos tiveram Recall menor e dois falsos negativos adicionais em relação aos baselines. A seleção não foi alterada após observar o teste. Consulte a [tabela de comparação](results/ga/final_study_20261025/final_comparison.md), a [análise](results/ga/final_study_20261025/analysis.md), o [manifesto](results/ga/final_study_20261025/study_manifest.json) e os históricos/configurações de cada execução no mesmo diretório.
+
+Para reproduzir os seis experimentos e gerar a comparação final em um diretório de estudo novo:
+
+```powershell
+python scripts\run_final_study.py --study-id minha_nova_execucao
+```
+
+O [relatório técnico da Fase 2](docs/relatorio_tecnico_fase2.md) consolida metodologia, configurações, resultados, gráficos, limitações e conclusão. Os valores foram conferidos com os JSON/CSV dos baselines e das seis buscas.
+
 ## Estrutura adicionada
 
 ```text
 src/breast_cancer_ga/   carregamento, genes, fitness, GA e persistência
-scripts/                reprodução do baseline e CLI das buscas
+scripts/                reprodução do baseline e execução das buscas
 tests/                  testes unitários e integração curta
 results/                métricas, históricos e gráficos verificados
 docs/                   requisitos, decisões e próximos passos
@@ -131,10 +152,12 @@ docs/                   requisitos, decisões e próximos passos
 - [x] Registrar configurações, métricas, falhas, históricos e gráficos.
 - [x] Executar uma busca pequena por modelo.
 - [x] Passar os testes automatizados.
-- [ ] Executar ao menos três experimentos completos com configurações diferentes.
-- [ ] Avaliar uma configuração final selecionada no teste reservado.
+- [x] Executar três configurações completas por modelo e selecionar candidatos por CV no treino.
+- [x] Avaliar os candidatos finais no teste reservado após a seleção.
+- [x] Comparar modelos originais e otimizados e analisar Recall/FN.
 - [ ] Integrar e avaliar uma LLM.
-- [ ] Produzir relatório técnico e vídeo de até 15 minutos.
+- [x] Produzir relatório técnico: [docs/relatorio_tecnico_fase2.md](docs/relatorio_tecnico_fase2.md).
+- [ ] Gravar vídeo demonstrativo de até 15 minutos.
 - [ ] Decidir sobre nuvem/IaC (opcional no documento oficial).
 
 O mapeamento completo entre o PDF, o escopo implementado e as pendências está em [docs/fase2_requirements.md](docs/fase2_requirements.md).
