@@ -1,30 +1,20 @@
-# Tech Challenge - Fase 2: otimização de modelos de câncer de mama
+﻿# Tech Challenge — Fase 2: otimização de modelos de câncer de mama
 
-Continuação preservadora do projeto da Fase 1. O repositório mantém os notebooks, o CSV e as imagens originais e inclui um algoritmo genético para otimizar Regressão Logística e Árvore de Decisão, com seis experimentos completos, seleção por CV no treino e comparação final no teste reservado.
+Continuação do projeto da Fase 01, com algoritmo genético para buscar hiperparâmetros de Regressão Logística e Árvore de Decisão e uma interface local para interpretação de resultados com LLM. A metodologia, os experimentos e a análise dos resultados estão no relatório técnico da Fase 2.
 
-As execuções pequenas documentadas abaixo serviram como verificações funcionais. O estudo final em `results/ga/final_study_20261025/` contém três configurações distintas para cada modelo, seleção de hiperparâmetros sem consultar o teste, avaliação final dos dois candidatos e análise comparativa.
+## O que é da Fase 01
 
-## O que foi preservado da Fase 1
+A Fase 01 contém o estudo inicial de classificação de tumores como benignos ou malignos, com preparação dos dados, treinamento e comparação dos dois modelos. Seus artefatos foram preservados:
 
-- `cancer-regressao-logistica.ipynb`: regressão com `StandardScaler`, ajustado apenas no treino.
-- `cancer-arvore-decisao.ipynb`: árvore e escolha de `max_depth=7` por CV no treino.
-- `comparativo.ipynb`: comparação histórica.
-- `dataset-breast-cancer/data.csv` e `img/`: dados e figuras originais.
-- Divisão estratificada 80/20 com `random_state=42`.
-- Codificação original do CSV: `M` (maligno) = `1`; `B` (benigno) = `0`.
+- [01fase/](01fase/): notebooks de Regressão Logística, Árvore de Decisão e comparação dos modelos.
+- [dataset-breast-cancer/data.csv](dataset-breast-cancer/data.csv): conjunto de dados utilizado nos estudos.
+- [01fase/img/](01fase/img/): figuras do estudo original.
 
-Os resultados reproduzidos coincidiram com os notebooks; não foi necessário criar um baseline metodologicamente corrigido separado. Consulte [a tabela de referência](results/phase1_baseline/reference_table.md) e o [registro completo em JSON](results/phase1_baseline/baseline_metrics.json).
+Esses modelos são a referência (baseline) para a otimização da Fase 2.
 
-| Modelo | Accuracy no teste | Recall maligno | Precision maligna | F1 maligno | FN | Matriz `[[TN, FP], [FN, TP]]` |
-|---|---:|---:|---:|---:|---:|---|
-| Regressão Logística | 0,9649 | 0,9286 | 0,9750 | 0,9512 | 3 | `[[71, 1], [3, 39]]` |
-| Árvore de Decisão (`max_depth=7`) | 0,9386 | 0,8810 | 0,9487 | 0,9136 | 5 | `[[70, 2], [5, 37]]` |
+## Instalação e execução
 
-Esses números são do teste reservado. Não devem ser comparados como se fossem equivalentes ao fitness de CV das buscas.
-
-## Instalação no Windows PowerShell
-
-Requer Python 3.11 ou superior; esta execução foi validada com Python 3.14.6.
+Execute os comandos na raiz do repositório, pelo Windows PowerShell. O projeto declara Python 3.11 ou superior; as dependências fixadas foram usadas com Python 3.14.
 
 ```powershell
 py -3.14 -m venv .venv
@@ -34,130 +24,97 @@ python -m pip install -r requirements.txt
 python -m pip install -e .
 ```
 
-As versões diretas estão fixadas em `requirements.txt`. O `.venv`, caches e temporários são ignorados pelo Git.
+Com o ambiente virtual ativo, os principais comandos são:
 
-## Comandos
+| Objetivo | Comando |
+|---|---|
+| Abrir os notebooks da Fase 01 | `jupyter notebook 01fase` |
+| Reproduzir os modelos de referência | `python scripts\reproduce_baseline.py` |
+| Executar os testes automatizados | `python -m pytest` |
+| Executar o estudo completo, com três buscas por modelo | `python scripts\run_final_study.py --study-id meu_estudo` |
+| Iniciar a interface e a API local | `python scripts\serve_interpreter.py` |
 
-Reproduzir os baselines da Fase 1:
-
-```powershell
-python scripts\reproduce_baseline.py
-```
-
-Executar os testes:
-
-```powershell
-python -m pytest
-```
-
-Validação registrada em 25/10/2026: 11 testes passaram no ambiente virtual do projeto.
-
-Executar buscas pequenas em diretórios novos (o comando se recusa a sobrescrever um diretório não vazio):
+Para executar uma busca pequena por modelo:
 
 ```powershell
 python scripts\run_ga.py --model logistic_regression --run-id minha_logistica --population-size 8 --generations 3 --folds 5 --seed 42
 python scripts\run_ga.py --model decision_tree --run-id minha_arvore --population-size 8 --generations 3 --folds 5 --seed 42
 ```
 
-Também são configuráveis `--crossover-rate`, `--mutation-rate`, `--elitism` e `--tournament-size`.
+Os resultados são gravados em `results/`. Use identificadores novos em `--run-id` e `--study-id` para cada execução. Para consultar os parâmetros disponíveis, acrescente `--help` ao comando do script.
 
-## Arquitetura e proteção contra vazamento
+## Interface de interpretação com LLM
 
-```mermaid
-flowchart LR
-    CSV[CSV original] --> Split[Split estratificado 80/20, seed 42]
-    Split --> Train[Treino]
-    Split --> Test[Teste reservado]
-    Train --> GA[Algoritmo genético]
-    GA --> CV[StratifiedKFold, seed 42]
-    CV --> Pipe[Pipeline ajustado em cada fold]
-    Pipe --> Fit[Recall maligno + métricas auxiliares]
-    Fit --> History[JSON, CSV e gráfico]
-    Test --> FinalEval[Avaliação final após seleção]
-```
+A interface recebe uma classe prevista, as probabilidades de benigno e maligno e uma ou mais métricas agregadas (`accuracy`, `precision`, `recall` e `f1`). Com esses valores, solicita a um provedor LLM uma explicação educativa em português. A previsão deve ser informada pelo usuário; o formulário não executa os modelos de classificação.
 
-O objeto `GeneticAlgorithm` recebe apenas `X_train` e `y_train`; sua função fitness não possui acesso nem parâmetros de teste. A padronização da regressão está dentro do `Pipeline`, sendo reajustada exclusivamente na parte de treino de cada fold. A árvore usa um passo explícito `passthrough`, pois não requer escala.
-
-## Algoritmo genético
-
-- População válida gerada por modelo.
-- Seleção por torneio.
-- Crossover uniforme por gene, sem modificar os pais.
-- Mutação por gene conforme seu tipo e reparo de combinações inválidas.
-- Elitismo configurável e tamanho de população constante.
-- Fitness principal: recall médio da classe maligna (`pos_label=1`) em CV estratificada.
-- Desempate fixo: F1 médio e depois precision média.
-- Registro de dispersão, falsos negativos por fold, tempo e falhas.
-- Falhas de treino ou convergência recebem resultado inválido; não ganham score favorável.
-
-Maximizar somente recall pode favorecer previsões excessivas de malignidade. Por isso precision e F1 acompanham todas as avaliações, mas não substituem silenciosamente o objetivo durante a execução.
-
-Os domínios e operadores estão detalhados em [docs/genetic_algorithm.md](docs/genetic_algorithm.md).
-
-## Resultados das verificações pequenas
-
-Configuração comum: população 8, 3 gerações, 5 folds, seed 42, crossover 0,8, mutação 0,2 e elitismo 1.
-
-| Busca | Melhor indivíduo | Recall CV | Precision CV | F1 CV | FN somados nos folds | Falhas |
-|---|---|---:|---:|---:|---:|---:|
-| Logística | `C=0,3923488`, `liblinear`, `l2` | 0,95294 | 0,98269 | 0,96686 | 8 | 2 avaliações `saga/l1` sem convergência |
-| Árvore | `depth=3`, `split=23`, `leaf=12`, `log_loss` | 0,90000 | 0,90537 | 0,90216 | 17 | 0 |
-
-Artefatos completos:
-
-- `results/ga/small_logistic_seed42/`
-- `results/ga/small_tree_seed42/`
-- Cada pasta contém `config.json`, `history.csv`, `history.json`, `best_individual.json`, `summary.json` e `evolution.png`.
-
-O scikit-learn 1.9 ainda aceita o gene `penalty`, mas emite aviso de depreciação com remoção prevista para 1.10. Os avisos foram registrados; uma migração de representação deve ser feita antes de atualizar a biblioteca.
-
-## Estudo final e comparação
-
-Foram executadas três configurações distintas por modelo (populações 12, 20 e 32; 8, 12 e 16 gerações; seeds 42, 43 e 44). A seleção foi feita por recall médio em cinco folds no treino, com F1 e precision como desempates. Somente após fixar um candidato por modelo foi feita a avaliação no teste reservado.
-
-| Modelo | Experimento selecionado | Recall CV | Recall teste original → otimizado | FN teste original → otimizado |
-|---|---|---:|---:|---:|
-| Regressão Logística | `experiment_03` | 0,9647 | 0,9286 → 0,8810 | 3 → 5 |
-| Árvore de Decisão | `experiment_02` | 0,9412 | 0,8810 → 0,8333 | 5 → 7 |
-
-Neste split, os dois candidatos tiveram Recall menor e dois falsos negativos adicionais em relação aos baselines. A seleção não foi alterada após observar o teste. Consulte a [tabela de comparação](results/ga/final_study_20261025/final_comparison.md), a [análise](results/ga/final_study_20261025/analysis.md), o [manifesto](results/ga/final_study_20261025/study_manifest.json) e os históricos/configurações de cada execução no mesmo diretório.
-
-Para reproduzir os seis experimentos e gerar a comparação final em um diretório de estudo novo:
+Configure as variáveis de ambiente e inicie o servidor:
 
 ```powershell
-python scripts\run_final_study.py --study-id minha_nova_execucao
+$env:LLM_API_URL = "https://seu-provedor/v1/chat/completions"
+$env:LLM_API_KEY = "sua-chave"
+$env:LLM_MODEL = "nome-do-modelo"
+python scripts\serve_interpreter.py
 ```
 
-O [relatório técnico da Fase 2](docs/relatorio_tecnico_fase2.md) consolida metodologia, configurações, resultados, gráficos, limitações e conclusão. Os valores foram conferidos com os JSON/CSV dos baselines e das seis buscas.
+Abra **http://127.0.0.1:8000** e preencha o formulário. Use `Ctrl+C` no terminal para encerrar. O servidor aceita `--host` e `--port` e, por padrão, escuta apenas no computador local.
 
-## Estrutura adicionada
+O provedor deve oferecer um endpoint HTTPS compatível com chat completions. A chave permanece no servidor, e os dados enviados se limitam à classe, às probabilidades e às métricas aceitas. Não informe dados pessoais ou atributos de pacientes. O prompt pede uma explicação com limitações, sem confirmação de diagnóstico ou recomendações de tratamento; a aplicação é uma demonstração acadêmica.
+
+Detalhes de configuração em [docs/llm_interpretation.md](docs/llm_interpretation.md) e comandos de avaliação das respostas em [docs/llm_evaluation.md](docs/llm_evaluation.md).
+
+## API local e suas três rotas principais
+
+A API usa `ThreadingHTTPServer`, da biblioteca padrão do Python, e inicia junto com a interface.
+
+| Método e rota | Finalidade | Resposta de sucesso |
+|---|---|---|
+| `GET /` | Exibir o formulário web | Página HTML |
+| `POST /interpret` | Validar os valores informados e solicitar a explicação à LLM | JSON com o campo `interpretation` |
+| `GET /healthz` | Verificar se o servidor local responde | `{"status":"ok"}` |
+
+A rota de saúde não verifica a disponibilidade do provedor LLM. Há também a rota auxiliar `GET /metrics`, que expõe contadores de requisições e duração para monitoramento.
+
+Exemplo de chamada pelo PowerShell, com o servidor configurado e em execução:
+
+```powershell
+$payload = @{
+    diagnosis = "maligno"
+    probabilities = @{ benigno = 0.15; maligno = 0.85 }
+    metrics = @{ accuracy = 0.8; precision = 0.75; recall = 0.75; f1 = 0.75 }
+} | ConvertTo-Json -Depth 3
+
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/interpret" `
+    -Method Post -ContentType "application/json; charset=utf-8" `
+    -Body ([System.Text.Encoding]::UTF8.GetBytes($payload))
+```
+
+O exemplo usa valores sintéticos e faz uma chamada real ao provedor, sujeita à cobrança dele. O contrato completo, as validações e os códigos de erro estão em [docs/api.md](docs/api.md). As métricas estão descritas em [docs/monitoramento.md](docs/monitoramento.md).
+
+## Estrutura adicionada e design patterns utilizados
 
 ```text
-src/breast_cancer_ga/   carregamento, genes, fitness, GA e persistência
-scripts/                reprodução do baseline e execução das buscas
-tests/                  testes unitários e integração curta
-results/                métricas, históricos e gráficos verificados
-docs/                   requisitos, decisões e próximos passos
+src/breast_cancer_ga/
+    data.py             carregamento e divisão dos dados
+    models.py           genes, validação e construção dos modelos
+    fitness.py          avaliação dos candidatos por validação cruzada
+    ga.py               configuração e execução do algoritmo genético
+    reporting.py        gravação de métricas, históricos e gráficos
+    interpretation.py   validação dos dados, prompt e integração com LLM
+    web.py              formulário, rotas HTTP e métricas do serviço
+    evaluation.py       coleta e avaliação das respostas da LLM
+scripts/                comandos de reprodução, buscas, servidor e avaliação
+tests/                  testes automatizados
+evaluation/             casos versionados para avaliação da LLM
+results/                artefatos gerados pelas execuções
+docs/                   documentação de apoio
 ```
 
-## Checklist desta etapa
+Os padrões e práticas aparecem de forma simples, por funções e composição:
 
-- [x] Preservar e inspecionar os artefatos da Fase 1.
-- [x] Conferir o documento oficial da Fase 2 e mapear o escopo.
-- [x] Criar `.venv` e fixar dependências.
-- [x] Reproduzir os dois baselines e salvar JSON, CSV e tabela.
-- [x] Implementar e validar genes dos dois modelos.
-- [x] Implementar fitness somente no treino com CV estratificada e Pipeline.
-- [x] Implementar seleção, crossover, mutação, elitismo e evolução.
-- [x] Registrar configurações, métricas, falhas, históricos e gráficos.
-- [x] Executar uma busca pequena por modelo.
-- [x] Passar os testes automatizados.
-- [x] Executar três configurações completas por modelo e selecionar candidatos por CV no treino.
-- [x] Avaliar os candidatos finais no teste reservado após a seleção.
-- [x] Comparar modelos originais e otimizados e analisar Recall/FN.
-- [ ] Integrar e avaliar uma LLM.
-- [x] Produzir relatório técnico: [docs/relatorio_tecnico_fase2.md](docs/relatorio_tecnico_fase2.md).
-- [ ] Gravar vídeo demonstrativo de até 15 minutos.
-- [ ] Decidir sobre nuvem/IaC (opcional no documento oficial).
-
-O mapeamento completo entre o PDF, o escopo implementado e as pendências está em [docs/fase2_requirements.md](docs/fase2_requirements.md).
+| Padrão ou prática | Onde aparece e para que serve |
+|---|---|
+| **Strategy com injeção de dependência** | `GeneticAlgorithm` recebe `fitness_function`, permitindo trocar a função de avaliação sem alterar a evolução. `create_server` também recebe uma função `interpreter`, substituível nos testes. |
+| **Fábrica simples (Simple Factory)** | `build_pipeline`, em `models.py`, centraliza a criação do pipeline de Regressão Logística ou Árvore de Decisão. |
+| **Composição com Pipeline** | O `Pipeline` do scikit-learn reúne pré-processamento e modelo em um único fluxo de treinamento e previsão. |
+| **Objetos de dados (DTOs)** | Dataclasses como `GAConfig`, `DatasetSplit`, `FitnessResult` e `InterpretationInput` agrupam configurações, entradas e resultados com campos explícitos. |
+| **Memoização** | O cache de `GeneticAlgorithm` reutiliza a avaliação de indivíduos com os mesmos genes durante uma busca, evitando treinamentos repetidos. |

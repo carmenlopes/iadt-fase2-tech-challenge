@@ -27,6 +27,8 @@ A árvore não exige padronização; o pipeline contém um passo `passthrough`, 
 
 Cada indivíduo é validado antes do treino. A avaliação usa `StratifiedKFold` com embaralhamento, seed fixa e cinco folds por padrão. Somente treino entra nessa função.
 
+A seed é fixa dentro de cada busca. No estudo final, as três configurações usam 42, 43 e 44 tanto no GA quanto na CV; a divisão externa treino/teste continua com seed 42. Assim, as partições internas variam entre configurações.
+
 Por fold são registrados recall, precision, F1, TN, FP, FN e TP. O fitness é a média do recall para `pos_label=1` (maligno); sua dispersão, as demais métricas e os FN também são agregados.
 
 Ordenação determinística dos indivíduos:
@@ -51,7 +53,7 @@ A regra não muda durante uma execução. Uma falha ou não convergência não r
 
 ## Artefatos por execução
 
-- `config.json`: parâmetros do GA, hash/dimensões do dataset, split, classes e versões do ambiente.
+- `config.json`: parâmetros do GA e metadados enviados pelo script. `run_ga.py` inclui hash/dimensões do dataset, split, classes e versões do ambiente; `run_final_study.py` inclui identificação do estudo, configuração, hash e contagens, sem registrar versões nesse arquivo.
 - `history.csv` e `history.json`: melhor fitness, média/desvio da população, melhor indivíduo, complementares, tempo e falhas por geração.
 - `best_individual.json`: genes e métricas por fold.
 - `summary.json`: objetivo, desempate, confirmação de ausência do teste e falhas detalhadas.

@@ -6,3 +6,4 @@ __pycache__/
 .coverage
 htmlcov/
 tmp/
+results/llm/.evaluation.lock
