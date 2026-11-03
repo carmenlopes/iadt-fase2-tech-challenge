@@ -1,0 +1,138 @@
+[
+  {
+    "generation": 0,
+    "best_fitness_recall": 0.9470588235294117,
+    "mean_fitness_recall": 0.8411764705882352,
+    "std_fitness_recall": 0.12553001819137932,
+    "best_precision": 0.9826890756302522,
+    "best_f1": 0.9634883729512886,
+    "best_recall_std": 0.050601913335544875,
+    "best_false_negatives_total": 9,
+    "best_genes": {
+      "C": 0.392348837595268,
+      "solver": "lbfgs",
+      "penalty": "l2"
+    },
+    "elapsed_seconds": 3.9796247999183834,
+    "evaluation_failures": 2
+  },
+  {
+    "generation": 1,
+    "best_fitness_recall": 0.9529411764705882,
+    "mean_fitness_recall": 0.9374331550802139,
+    "std_fitness_recall": 0.025365863584238372,
+    "best_precision": 0.9826890756302522,
+    "best_f1": 0.9668613888243044,
+    "best_recall_std": 0.03989605872426629,
+    "best_false_negatives_total": 8,
+    "best_genes": {
+      "C": 0.392348837595268,
+      "solver": "liblinear",
+      "penalty": "l2"
+    },
+    "elapsed_seconds": 1.7098014997318387,
+    "evaluation_failures": 1
+  },
+  {
+    "generation": 2,
+    "best_fitness_recall": 0.9529411764705882,
+    "mean_fitness_recall": 0.9486631016042781,
+    "std_fitness_recall": 0.00362691442947874,
+    "best_precision": 0.9826890756302522,
+    "best_f1": 0.9668613888243044,
+    "best_recall_std": 0.03989605872426629,
+    "best_false_negatives_total": 8,
+    "best_genes": {
+      "C": 0.392348837595268,
+      "solver": "liblinear",
+      "penalty": "l2"
+    },
+    "elapsed_seconds": 0.48248809995129704,
+    "evaluation_failures": 1
+  },
+  {
+    "generation": 3,
+    "best_fitness_recall": 0.9529411764705882,
+    "mean_fitness_recall": 0.9485294117647057,
+    "std_fitness_recall": 0.005436537503141864,
+    "best_precision": 0.9826890756302522,
+    "best_f1": 0.9668613888243044,
+    "best_recall_std": 0.03989605872426629,
+    "best_false_negatives_total": 8,
+    "best_genes": {
+      "C": 0.392348837595268,
+      "solver": "liblinear",
+      "penalty": "l2"
+    },
+    "elapsed_seconds": 1.463365400210023,
+    "evaluation_failures": 0
+  },
+  {
+    "generation": 4,
+    "best_fitness_recall": 0.9529411764705882,
+    "mean_fitness_recall": 0.9480392156862744,
+    "std_fitness_recall": 0.01122110111986234,
+    "best_precision": 0.9826890756302522,
+    "best_f1": 0.9668613888243044,
+    "best_recall_std": 0.03989605872426629,
+    "best_false_negatives_total": 8,
+    "best_genes": {
+      "C": 0.392348837595268,
+      "solver": "liblinear",
+      "penalty": "l2"
+    },
+    "elapsed_seconds": 0.7660308997146785,
+    "evaluation_failures": 0
+  },
+  {
+    "generation": 5,
+    "best_fitness_recall": 0.9529411764705882,
+    "mean_fitness_recall": 0.9514705882352942,
+    "std_fitness_recall": 0.003500700210070012,
+    "best_precision": 0.9826890756302522,
+    "best_f1": 0.9668613888243044,
+    "best_recall_std": 0.03989605872426629,
+    "best_false_negatives_total": 8,
+    "best_genes": {
+      "C": 0.392348837595268,
+      "solver": "liblinear",
+      "penalty": "l2"
+    },
+    "elapsed_seconds": 0.40090039977803826,
+    "evaluation_failures": 0
+  },
+  {
+    "generation": 6,
+    "best_fitness_recall": 0.9529411764705882,
+    "mean_fitness_recall": 0.9524509803921569,
+    "std_fitness_recall": 0.0016257964658604844,
+    "best_precision": 0.9826890756302522,
+    "best_f1": 0.9668613888243044,
+    "best_recall_std": 0.03989605872426629,
+    "best_false_negatives_total": 8,
+    "best_genes": {
+      "C": 0.392348837595268,
+      "solver": "liblinear",
+      "penalty": "l2"
+    },
+    "elapsed_seconds": 0.1899868999607861,
+    "evaluation_failures": 0
+  },
+  {
+    "generation": 7,
+    "best_fitness_recall": 0.9529411764705882,
+    "mean_fitness_recall": 0.943627450980392,
+    "std_fitness_recall": 0.02916151709359972,
+    "best_precision": 0.9826890756302522,
+    "best_f1": 0.9668613888243044,
+    "best_recall_std": 0.03989605872426629,
+    "best_false_negatives_total": 8,
+    "best_genes": {
+      "C": 0.392348837595268,
+      "solver": "liblinear",
+      "penalty": "l2"
+    },
+    "elapsed_seconds": 0.21653110021725297,
+    "evaluation_failures": 0
+  }
+]

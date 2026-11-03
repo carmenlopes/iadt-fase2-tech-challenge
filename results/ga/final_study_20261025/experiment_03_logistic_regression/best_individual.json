@@ -1,0 +1,77 @@
+{
+  "genes": {
+    "C": 3507.0604419517017,
+    "solver": "lbfgs",
+    "penalty": "l2"
+  },
+  "metrics": {
+    "fitness": 0.9647058823529411,
+    "recall_mean": 0.9647058823529411,
+    "recall_std": 0.022009749333964365,
+    "precision_mean": 0.9552397035369171,
+    "precision_std": 0.035514630432469024,
+    "f1_mean": 0.9593015315578969,
+    "f1_std": 0.016477379846215272,
+    "false_negatives_mean": 1.2,
+    "false_negatives_total": 6,
+    "folds": [
+      {
+        "fold": 1,
+        "recall": 0.9411764705882353,
+        "precision": 0.9411764705882353,
+        "f1": 0.9411764705882353,
+        "false_negatives": 2,
+        "true_negatives": 55,
+        "false_positives": 2,
+        "true_positives": 32
+      },
+      {
+        "fold": 2,
+        "recall": 1.0,
+        "precision": 0.8947368421052632,
+        "f1": 0.9444444444444444,
+        "false_negatives": 0,
+        "true_negatives": 53,
+        "false_positives": 4,
+        "true_positives": 34
+      },
+      {
+        "fold": 3,
+        "recall": 0.9705882352941176,
+        "precision": 0.9705882352941176,
+        "f1": 0.9705882352941176,
+        "false_negatives": 1,
+        "true_negatives": 56,
+        "false_positives": 1,
+        "true_positives": 33
+      },
+      {
+        "fold": 4,
+        "recall": 0.9411764705882353,
+        "precision": 0.9696969696969697,
+        "f1": 0.9552238805970149,
+        "false_negatives": 2,
+        "true_negatives": 56,
+        "false_positives": 1,
+        "true_positives": 32
+      },
+      {
+        "fold": 5,
+        "recall": 0.9705882352941176,
+        "precision": 1.0,
+        "f1": 0.9850746268656716,
+        "false_negatives": 1,
+        "true_negatives": 57,
+        "false_positives": 0,
+        "true_positives": 33
+      }
+    ],
+    "warnings": [
+      "fold 1: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+      "fold 2: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+      "fold 3: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+      "fold 4: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+      "fold 5: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None."
+    ]
+  }
+}

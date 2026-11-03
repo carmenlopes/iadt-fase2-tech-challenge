@@ -1,0 +1,1 @@
+﻿run_id,case_id,attempt_id,response_sha256,scenario,input_json,response,expected,forbidden,reviewer_id,reviewer_profile,fidelity,statistics,uncertainty,utility,clarity,invented_results,statistical_inversion,confirmed_diagnosis,patient_advice,justification,error_excerpt

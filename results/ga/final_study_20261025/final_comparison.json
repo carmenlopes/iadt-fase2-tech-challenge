@@ -1,0 +1,814 @@
+{
+  "study_id": "final_study_20261025",
+  "dataset_sha256": "1425d9affa78ba8e53afc81d0ef8a19069ee10c4b21fe89b3cf514071b12ee33",
+  "split": {
+    "test_size": 0.2,
+    "seed": 42,
+    "train_rows": 455,
+    "test_rows": 114
+  },
+  "selection_protocol": "Best CV candidate per model across three distinct GA configurations; recall, then F1, then precision; test outcomes excluded.",
+  "test_evaluations": 2,
+  "experiments": {
+    "logistic_regression": [
+      {
+        "experiment": {
+          "name": "experiment_01",
+          "population_size": 12,
+          "generations": 8,
+          "seed": 42,
+          "crossover_rate": 0.8,
+          "mutation_rate": 0.2,
+          "elitism": 1,
+          "tournament_size": 3
+        },
+        "run_dir": "experiment_01_logistic_regression",
+        "genes": {
+          "C": 0.392348837595268,
+          "solver": "liblinear",
+          "penalty": "l2"
+        },
+        "metrics": {
+          "fitness": 0.9529411764705882,
+          "recall_mean": 0.9529411764705882,
+          "recall_std": 0.03989605872426629,
+          "precision_mean": 0.9826890756302522,
+          "precision_std": 0.02294348497019365,
+          "f1_mean": 0.9668613888243044,
+          "f1_std": 0.02044063092780087,
+          "false_negatives_mean": 1.6,
+          "false_negatives_total": 8,
+          "folds": [
+            {
+              "fold": 1,
+              "recall": 0.8823529411764706,
+              "precision": 1.0,
+              "f1": 0.9375,
+              "false_negatives": 4,
+              "true_negatives": 57,
+              "false_positives": 0,
+              "true_positives": 30
+            },
+            {
+              "fold": 2,
+              "recall": 0.9705882352941176,
+              "precision": 0.9428571428571428,
+              "f1": 0.9565217391304348,
+              "false_negatives": 1,
+              "true_negatives": 55,
+              "false_positives": 2,
+              "true_positives": 33
+            },
+            {
+              "fold": 3,
+              "recall": 1.0,
+              "precision": 1.0,
+              "f1": 1.0,
+              "false_negatives": 0,
+              "true_negatives": 57,
+              "false_positives": 0,
+              "true_positives": 34
+            },
+            {
+              "fold": 4,
+              "recall": 0.9411764705882353,
+              "precision": 1.0,
+              "f1": 0.9696969696969697,
+              "false_negatives": 2,
+              "true_negatives": 57,
+              "false_positives": 0,
+              "true_positives": 32
+            },
+            {
+              "fold": 5,
+              "recall": 0.9705882352941176,
+              "precision": 0.9705882352941176,
+              "f1": 0.9705882352941176,
+              "false_negatives": 1,
+              "true_negatives": 56,
+              "false_positives": 1,
+              "true_positives": 33
+            }
+          ],
+          "warnings": [
+            "fold 1: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 2: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 3: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 4: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 5: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None."
+          ]
+        },
+        "score_key": [
+          0.9529411764705882,
+          0.9668613888243044,
+          0.9826890756302522
+        ]
+      },
+      {
+        "experiment": {
+          "name": "experiment_02",
+          "population_size": 20,
+          "generations": 12,
+          "seed": 43,
+          "crossover_rate": 0.85,
+          "mutation_rate": 0.25,
+          "elitism": 2,
+          "tournament_size": 3
+        },
+        "run_dir": "experiment_02_logistic_regression",
+        "genes": {
+          "C": 0.6246283006117107,
+          "solver": "lbfgs",
+          "penalty": "l2"
+        },
+        "metrics": {
+          "fitness": 0.9529411764705882,
+          "recall_mean": 0.9529411764705882,
+          "recall_std": 0.03989605872426629,
+          "precision_mean": 0.9828571428571429,
+          "precision_std": 0.022857142857142864,
+          "f1_mean": 0.9668601164139776,
+          "f1_std": 0.018201264044533316,
+          "false_negatives_mean": 1.6,
+          "false_negatives_total": 8,
+          "folds": [
+            {
+              "fold": 1,
+              "recall": 1.0,
+              "precision": 0.9714285714285714,
+              "f1": 0.9855072463768116,
+              "false_negatives": 0,
+              "true_negatives": 56,
+              "false_positives": 1,
+              "true_positives": 34
+            },
+            {
+              "fold": 2,
+              "recall": 0.9705882352941176,
+              "precision": 1.0,
+              "f1": 0.9850746268656716,
+              "false_negatives": 1,
+              "true_negatives": 57,
+              "false_positives": 0,
+              "true_positives": 33
+            },
+            {
+              "fold": 3,
+              "recall": 0.9411764705882353,
+              "precision": 1.0,
+              "f1": 0.9696969696969697,
+              "false_negatives": 2,
+              "true_negatives": 57,
+              "false_positives": 0,
+              "true_positives": 32
+            },
+            {
+              "fold": 4,
+              "recall": 0.8823529411764706,
+              "precision": 1.0,
+              "f1": 0.9375,
+              "false_negatives": 4,
+              "true_negatives": 57,
+              "false_positives": 0,
+              "true_positives": 30
+            },
+            {
+              "fold": 5,
+              "recall": 0.9705882352941176,
+              "precision": 0.9428571428571428,
+              "f1": 0.9565217391304348,
+              "false_negatives": 1,
+              "true_negatives": 55,
+              "false_positives": 2,
+              "true_positives": 33
+            }
+          ],
+          "warnings": [
+            "fold 1: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 2: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 3: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 4: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 5: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None."
+          ]
+        },
+        "score_key": [
+          0.9529411764705882,
+          0.9668601164139776,
+          0.9828571428571429
+        ]
+      },
+      {
+        "experiment": {
+          "name": "experiment_03",
+          "population_size": 32,
+          "generations": 16,
+          "seed": 44,
+          "crossover_rate": 0.9,
+          "mutation_rate": 0.15,
+          "elitism": 3,
+          "tournament_size": 5
+        },
+        "run_dir": "experiment_03_logistic_regression",
+        "genes": {
+          "C": 3507.0604419517017,
+          "solver": "lbfgs",
+          "penalty": "l2"
+        },
+        "metrics": {
+          "fitness": 0.9647058823529411,
+          "recall_mean": 0.9647058823529411,
+          "recall_std": 0.022009749333964365,
+          "precision_mean": 0.9552397035369171,
+          "precision_std": 0.035514630432469024,
+          "f1_mean": 0.9593015315578969,
+          "f1_std": 0.016477379846215272,
+          "false_negatives_mean": 1.2,
+          "false_negatives_total": 6,
+          "folds": [
+            {
+              "fold": 1,
+              "recall": 0.9411764705882353,
+              "precision": 0.9411764705882353,
+              "f1": 0.9411764705882353,
+              "false_negatives": 2,
+              "true_negatives": 55,
+              "false_positives": 2,
+              "true_positives": 32
+            },
+            {
+              "fold": 2,
+              "recall": 1.0,
+              "precision": 0.8947368421052632,
+              "f1": 0.9444444444444444,
+              "false_negatives": 0,
+              "true_negatives": 53,
+              "false_positives": 4,
+              "true_positives": 34
+            },
+            {
+              "fold": 3,
+              "recall": 0.9705882352941176,
+              "precision": 0.9705882352941176,
+              "f1": 0.9705882352941176,
+              "false_negatives": 1,
+              "true_negatives": 56,
+              "false_positives": 1,
+              "true_positives": 33
+            },
+            {
+              "fold": 4,
+              "recall": 0.9411764705882353,
+              "precision": 0.9696969696969697,
+              "f1": 0.9552238805970149,
+              "false_negatives": 2,
+              "true_negatives": 56,
+              "false_positives": 1,
+              "true_positives": 32
+            },
+            {
+              "fold": 5,
+              "recall": 0.9705882352941176,
+              "precision": 1.0,
+              "f1": 0.9850746268656716,
+              "false_negatives": 1,
+              "true_negatives": 57,
+              "false_positives": 0,
+              "true_positives": 33
+            }
+          ],
+          "warnings": [
+            "fold 1: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 2: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 3: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 4: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 5: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None."
+          ]
+        },
+        "score_key": [
+          0.9647058823529411,
+          0.9593015315578969,
+          0.9552397035369171
+        ]
+      }
+    ],
+    "decision_tree": [
+      {
+        "experiment": {
+          "name": "experiment_01",
+          "population_size": 12,
+          "generations": 8,
+          "seed": 42,
+          "crossover_rate": 0.8,
+          "mutation_rate": 0.2,
+          "elitism": 1,
+          "tournament_size": 3
+        },
+        "run_dir": "experiment_01_decision_tree",
+        "genes": {
+          "max_depth": 3,
+          "min_samples_split": 23,
+          "min_samples_leaf": 12,
+          "criterion": "log_loss"
+        },
+        "metrics": {
+          "fitness": 0.9,
+          "recall_mean": 0.9,
+          "recall_std": 0.05455069703232768,
+          "precision_mean": 0.9053699813258638,
+          "precision_std": 0.03374922858199893,
+          "f1_mean": 0.9021598520831258,
+          "f1_std": 0.03956753213604978,
+          "false_negatives_mean": 3.4,
+          "false_negatives_total": 17,
+          "folds": [
+            {
+              "fold": 1,
+              "recall": 0.8823529411764706,
+              "precision": 0.9375,
+              "f1": 0.9090909090909091,
+              "false_negatives": 4,
+              "true_negatives": 55,
+              "false_positives": 2,
+              "true_positives": 30
+            },
+            {
+              "fold": 2,
+              "recall": 1.0,
+              "precision": 0.9444444444444444,
+              "f1": 0.9714285714285714,
+              "false_negatives": 0,
+              "true_negatives": 55,
+              "false_positives": 2,
+              "true_positives": 34
+            },
+            {
+              "fold": 3,
+              "recall": 0.8529411764705882,
+              "precision": 0.90625,
+              "f1": 0.8787878787878788,
+              "false_negatives": 5,
+              "true_negatives": 54,
+              "false_positives": 3,
+              "true_positives": 29
+            },
+            {
+              "fold": 4,
+              "recall": 0.8529411764705882,
+              "precision": 0.8529411764705882,
+              "f1": 0.8529411764705882,
+              "false_negatives": 5,
+              "true_negatives": 52,
+              "false_positives": 5,
+              "true_positives": 29
+            },
+            {
+              "fold": 5,
+              "recall": 0.9117647058823529,
+              "precision": 0.8857142857142857,
+              "f1": 0.8985507246376812,
+              "false_negatives": 3,
+              "true_negatives": 53,
+              "false_positives": 4,
+              "true_positives": 31
+            }
+          ],
+          "warnings": []
+        },
+        "score_key": [
+          0.9,
+          0.9021598520831258,
+          0.9053699813258638
+        ]
+      },
+      {
+        "experiment": {
+          "name": "experiment_02",
+          "population_size": 20,
+          "generations": 12,
+          "seed": 43,
+          "crossover_rate": 0.85,
+          "mutation_rate": 0.25,
+          "elitism": 2,
+          "tournament_size": 3
+        },
+        "run_dir": "experiment_02_decision_tree",
+        "genes": {
+          "max_depth": 20,
+          "min_samples_split": 19,
+          "min_samples_leaf": 14,
+          "criterion": "log_loss"
+        },
+        "metrics": {
+          "fitness": 0.9411764705882353,
+          "recall_mean": 0.9411764705882353,
+          "recall_std": 0.026306682088232825,
+          "precision_mean": 0.9207313195548489,
+          "precision_std": 0.041142131530757735,
+          "f1_mean": 0.9305007508116991,
+          "f1_std": 0.029528942850098144,
+          "false_negatives_mean": 2.0,
+          "false_negatives_total": 10,
+          "folds": [
+            {
+              "fold": 1,
+              "recall": 0.9705882352941176,
+              "precision": 1.0,
+              "f1": 0.9850746268656716,
+              "false_negatives": 1,
+              "true_negatives": 57,
+              "false_positives": 0,
+              "true_positives": 33
+            },
+            {
+              "fold": 2,
+              "recall": 0.9705882352941176,
+              "precision": 0.8918918918918919,
+              "f1": 0.9295774647887324,
+              "false_negatives": 1,
+              "true_negatives": 53,
+              "false_positives": 4,
+              "true_positives": 33
+            },
+            {
+              "fold": 3,
+              "recall": 0.9117647058823529,
+              "precision": 0.8857142857142857,
+              "f1": 0.8985507246376812,
+              "false_negatives": 3,
+              "true_negatives": 53,
+              "false_positives": 4,
+              "true_positives": 31
+            },
+            {
+              "fold": 4,
+              "recall": 0.9117647058823529,
+              "precision": 0.9117647058823529,
+              "f1": 0.9117647058823529,
+              "false_negatives": 3,
+              "true_negatives": 54,
+              "false_positives": 3,
+              "true_positives": 31
+            },
+            {
+              "fold": 5,
+              "recall": 0.9411764705882353,
+              "precision": 0.9142857142857143,
+              "f1": 0.927536231884058,
+              "false_negatives": 2,
+              "true_negatives": 54,
+              "false_positives": 3,
+              "true_positives": 32
+            }
+          ],
+          "warnings": []
+        },
+        "score_key": [
+          0.9411764705882353,
+          0.9305007508116991,
+          0.9207313195548489
+        ]
+      },
+      {
+        "experiment": {
+          "name": "experiment_03",
+          "population_size": 32,
+          "generations": 16,
+          "seed": 44,
+          "crossover_rate": 0.9,
+          "mutation_rate": 0.15,
+          "elitism": 3,
+          "tournament_size": 5
+        },
+        "run_dir": "experiment_03_decision_tree",
+        "genes": {
+          "max_depth": 13,
+          "min_samples_split": 10,
+          "min_samples_leaf": 3,
+          "criterion": "log_loss"
+        },
+        "metrics": {
+          "fitness": 0.9352941176470588,
+          "recall_mean": 0.9352941176470588,
+          "recall_std": 0.050601913335544875,
+          "precision_mean": 0.9072383720930233,
+          "precision_std": 0.07560352185011968,
+          "f1_mean": 0.9177002164502165,
+          "f1_std": 0.03786109821943351,
+          "false_negatives_mean": 2.2,
+          "false_negatives_total": 11,
+          "folds": [
+            {
+              "fold": 1,
+              "recall": 0.8529411764705882,
+              "precision": 0.9666666666666667,
+              "f1": 0.90625,
+              "false_negatives": 5,
+              "true_negatives": 56,
+              "false_positives": 1,
+              "true_positives": 29
+            },
+            {
+              "fold": 2,
+              "recall": 1.0,
+              "precision": 0.9444444444444444,
+              "f1": 0.9714285714285714,
+              "false_negatives": 0,
+              "true_negatives": 55,
+              "false_positives": 2,
+              "true_positives": 34
+            },
+            {
+              "fold": 3,
+              "recall": 0.9117647058823529,
+              "precision": 0.96875,
+              "f1": 0.9393939393939394,
+              "false_negatives": 3,
+              "true_negatives": 56,
+              "false_positives": 1,
+              "true_positives": 31
+            },
+            {
+              "fold": 4,
+              "recall": 0.9411764705882353,
+              "precision": 0.8888888888888888,
+              "f1": 0.9142857142857143,
+              "false_negatives": 2,
+              "true_negatives": 53,
+              "false_positives": 4,
+              "true_positives": 32
+            },
+            {
+              "fold": 5,
+              "recall": 0.9705882352941176,
+              "precision": 0.7674418604651163,
+              "f1": 0.8571428571428571,
+              "false_negatives": 1,
+              "true_negatives": 47,
+              "false_positives": 10,
+              "true_positives": 33
+            }
+          ],
+          "warnings": []
+        },
+        "score_key": [
+          0.9352941176470588,
+          0.9177002164502165,
+          0.9072383720930233
+        ]
+      }
+    ]
+  },
+  "comparison": [
+    {
+      "model": "logistic_regression",
+      "model_label": "Regressão Logística",
+      "selection": {
+        "experiment": {
+          "name": "experiment_03",
+          "population_size": 32,
+          "generations": 16,
+          "seed": 44,
+          "crossover_rate": 0.9,
+          "mutation_rate": 0.15,
+          "elitism": 3,
+          "tournament_size": 5
+        },
+        "run_dir": "experiment_03_logistic_regression",
+        "genes": {
+          "C": 3507.0604419517017,
+          "solver": "lbfgs",
+          "penalty": "l2"
+        },
+        "cv_metrics": {
+          "fitness": 0.9647058823529411,
+          "recall_mean": 0.9647058823529411,
+          "recall_std": 0.022009749333964365,
+          "precision_mean": 0.9552397035369171,
+          "precision_std": 0.035514630432469024,
+          "f1_mean": 0.9593015315578969,
+          "f1_std": 0.016477379846215272,
+          "false_negatives_mean": 1.2,
+          "false_negatives_total": 6,
+          "folds": [
+            {
+              "fold": 1,
+              "recall": 0.9411764705882353,
+              "precision": 0.9411764705882353,
+              "f1": 0.9411764705882353,
+              "false_negatives": 2,
+              "true_negatives": 55,
+              "false_positives": 2,
+              "true_positives": 32
+            },
+            {
+              "fold": 2,
+              "recall": 1.0,
+              "precision": 0.8947368421052632,
+              "f1": 0.9444444444444444,
+              "false_negatives": 0,
+              "true_negatives": 53,
+              "false_positives": 4,
+              "true_positives": 34
+            },
+            {
+              "fold": 3,
+              "recall": 0.9705882352941176,
+              "precision": 0.9705882352941176,
+              "f1": 0.9705882352941176,
+              "false_negatives": 1,
+              "true_negatives": 56,
+              "false_positives": 1,
+              "true_positives": 33
+            },
+            {
+              "fold": 4,
+              "recall": 0.9411764705882353,
+              "precision": 0.9696969696969697,
+              "f1": 0.9552238805970149,
+              "false_negatives": 2,
+              "true_negatives": 56,
+              "false_positives": 1,
+              "true_positives": 32
+            },
+            {
+              "fold": 5,
+              "recall": 0.9705882352941176,
+              "precision": 1.0,
+              "f1": 0.9850746268656716,
+              "false_negatives": 1,
+              "true_negatives": 57,
+              "false_positives": 0,
+              "true_positives": 33
+            }
+          ],
+          "warnings": [
+            "fold 1: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 2: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 3: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 4: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+            "fold 5: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None."
+          ]
+        },
+        "criterion": "recall_mean, then f1_mean, then precision_mean",
+        "test_used_for_selection": false
+      },
+      "baseline": {
+        "accuracy": 0.9649122807017544,
+        "malignant_recall": 0.9285714285714286,
+        "malignant_precision": 0.975,
+        "malignant_f1": 0.9512195121951219,
+        "false_negatives": 3,
+        "confusion_matrix": [
+          [
+            71,
+            1
+          ],
+          [
+            3,
+            39
+          ]
+        ]
+      },
+      "optimized": {
+        "accuracy": 0.9298245614035088,
+        "malignant_recall": 0.8809523809523809,
+        "malignant_precision": 0.925,
+        "malignant_f1": 0.9024390243902439,
+        "false_negatives": 5,
+        "confusion_matrix": [
+          [
+            69,
+            3
+          ],
+          [
+            5,
+            37
+          ]
+        ]
+      }
+    },
+    {
+      "model": "decision_tree",
+      "model_label": "Árvore de Decisão",
+      "selection": {
+        "experiment": {
+          "name": "experiment_02",
+          "population_size": 20,
+          "generations": 12,
+          "seed": 43,
+          "crossover_rate": 0.85,
+          "mutation_rate": 0.25,
+          "elitism": 2,
+          "tournament_size": 3
+        },
+        "run_dir": "experiment_02_decision_tree",
+        "genes": {
+          "max_depth": 20,
+          "min_samples_split": 19,
+          "min_samples_leaf": 14,
+          "criterion": "log_loss"
+        },
+        "cv_metrics": {
+          "fitness": 0.9411764705882353,
+          "recall_mean": 0.9411764705882353,
+          "recall_std": 0.026306682088232825,
+          "precision_mean": 0.9207313195548489,
+          "precision_std": 0.041142131530757735,
+          "f1_mean": 0.9305007508116991,
+          "f1_std": 0.029528942850098144,
+          "false_negatives_mean": 2.0,
+          "false_negatives_total": 10,
+          "folds": [
+            {
+              "fold": 1,
+              "recall": 0.9705882352941176,
+              "precision": 1.0,
+              "f1": 0.9850746268656716,
+              "false_negatives": 1,
+              "true_negatives": 57,
+              "false_positives": 0,
+              "true_positives": 33
+            },
+            {
+              "fold": 2,
+              "recall": 0.9705882352941176,
+              "precision": 0.8918918918918919,
+              "f1": 0.9295774647887324,
+              "false_negatives": 1,
+              "true_negatives": 53,
+              "false_positives": 4,
+              "true_positives": 33
+            },
+            {
+              "fold": 3,
+              "recall": 0.9117647058823529,
+              "precision": 0.8857142857142857,
+              "f1": 0.8985507246376812,
+              "false_negatives": 3,
+              "true_negatives": 53,
+              "false_positives": 4,
+              "true_positives": 31
+            },
+            {
+              "fold": 4,
+              "recall": 0.9117647058823529,
+              "precision": 0.9117647058823529,
+              "f1": 0.9117647058823529,
+              "false_negatives": 3,
+              "true_negatives": 54,
+              "false_positives": 3,
+              "true_positives": 31
+            },
+            {
+              "fold": 5,
+              "recall": 0.9411764705882353,
+              "precision": 0.9142857142857143,
+              "f1": 0.927536231884058,
+              "false_negatives": 2,
+              "true_negatives": 54,
+              "false_positives": 3,
+              "true_positives": 32
+            }
+          ],
+          "warnings": []
+        },
+        "criterion": "recall_mean, then f1_mean, then precision_mean",
+        "test_used_for_selection": false
+      },
+      "baseline": {
+        "accuracy": 0.9385964912280702,
+        "malignant_recall": 0.8809523809523809,
+        "malignant_precision": 0.9487179487179487,
+        "malignant_f1": 0.9135802469135802,
+        "false_negatives": 5,
+        "confusion_matrix": [
+          [
+            70,
+            2
+          ],
+          [
+            5,
+            37
+          ]
+        ]
+      },
+      "optimized": {
+        "accuracy": 0.9385964912280702,
+        "malignant_recall": 0.8333333333333334,
+        "malignant_precision": 1.0,
+        "malignant_f1": 0.9090909090909091,
+        "false_negatives": 7,
+        "confusion_matrix": [
+          [
+            72,
+            0
+          ],
+          [
+            7,
+            35
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "ga": {
+    "model": "decision_tree",
+    "seed": 42,
+    "population_size": 6,
+    "generations": 3,
+    "crossover_rate": 0.8,
+    "mutation_rate": 0.2,
+    "elitism": 1,
+    "folds": 5,
+    "tournament_size": 3
+  },
+  "dataset": {
+    "path": "dataset-breast-cancer/data.csv",
+    "sha256": "1425d9affa78ba8e53afc81d0ef8a19069ee10c4b21fe89b3cf514071b12ee33",
+    "train_rows": 455,
+    "test_rows_reserved": 114,
+    "features": 30,
+    "malignant_source_value": "M",
+    "malignant_encoded_value": 1,
+    "benign_source_value": "B",
+    "benign_encoded_value": 0
+  },
+  "split": {
+    "method": "train_test_split stratified by target",
+    "test_size": 0.2,
+    "random_state": 42,
+    "test_used_by_ga": false
+  },
+  "environment": {
+    "python": "3.14.6",
+    "pandas": "3.0.5",
+    "scikit_learn": "1.9.0"
+  }
+}

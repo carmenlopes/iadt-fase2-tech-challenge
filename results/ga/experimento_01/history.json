@@ -1,0 +1,56 @@
+[
+  {
+    "generation": 0,
+    "best_fitness_recall": 0.9,
+    "mean_fitness_recall": 0.8801470588235294,
+    "std_fitness_recall": 0.016092697520764213,
+    "best_precision": 0.9053699813258638,
+    "best_f1": 0.9021598520831258,
+    "best_recall_std": 0.05455069703232768,
+    "best_false_negatives_total": 17,
+    "best_genes": {
+      "max_depth": 3,
+      "min_samples_split": 23,
+      "min_samples_leaf": 12,
+      "criterion": "log_loss"
+    },
+    "elapsed_seconds": 1.281082300003618,
+    "evaluation_failures": 0
+  },
+  {
+    "generation": 1,
+    "best_fitness_recall": 0.9,
+    "mean_fitness_recall": 0.8933823529411765,
+    "std_fitness_recall": 0.006858366950800596,
+    "best_precision": 0.9053699813258638,
+    "best_f1": 0.9021598520831258,
+    "best_recall_std": 0.05455069703232768,
+    "best_false_negatives_total": 17,
+    "best_genes": {
+      "max_depth": 3,
+      "min_samples_split": 23,
+      "min_samples_leaf": 12,
+      "criterion": "log_loss"
+    },
+    "elapsed_seconds": 0.7774231999646872,
+    "evaluation_failures": 0
+  },
+  {
+    "generation": 2,
+    "best_fitness_recall": 0.9,
+    "mean_fitness_recall": 0.8970588235294118,
+    "std_fitness_recall": 0.00588235294117645,
+    "best_precision": 0.9053699813258638,
+    "best_f1": 0.9021598520831258,
+    "best_recall_std": 0.05455069703232768,
+    "best_false_negatives_total": 17,
+    "best_genes": {
+      "max_depth": 3,
+      "min_samples_split": 23,
+      "min_samples_leaf": 12,
+      "criterion": "log_loss"
+    },
+    "elapsed_seconds": 0.7809280999936163,
+    "evaluation_failures": 0
+  }
+]

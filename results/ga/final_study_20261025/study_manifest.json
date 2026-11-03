@@ -1,0 +1,43 @@
+{
+  "study_id": "final_study_20261025",
+  "distinct_ga_configurations": [
+    {
+      "name": "experiment_01",
+      "population_size": 12,
+      "generations": 8,
+      "seed": 42,
+      "crossover_rate": 0.8,
+      "mutation_rate": 0.2,
+      "elitism": 1,
+      "tournament_size": 3
+    },
+    {
+      "name": "experiment_02",
+      "population_size": 20,
+      "generations": 12,
+      "seed": 43,
+      "crossover_rate": 0.85,
+      "mutation_rate": 0.25,
+      "elitism": 2,
+      "tournament_size": 3
+    },
+    {
+      "name": "experiment_03",
+      "population_size": 32,
+      "generations": 16,
+      "seed": 44,
+      "crossover_rate": 0.9,
+      "mutation_rate": 0.15,
+      "elitism": 3,
+      "tournament_size": 5
+    }
+  ],
+  "models": [
+    "logistic_regression",
+    "decision_tree"
+  ],
+  "runs_completed": 6,
+  "status": "complete",
+  "selection_uses_test": false,
+  "final_test_evaluation_count": 2
+}
