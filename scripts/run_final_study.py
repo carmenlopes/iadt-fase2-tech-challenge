@@ -213,7 +213,7 @@ def main() -> None:
     (study_dir / "final_comparison.md").write_text("\n".join(table_lines), encoding="utf-8")
     (study_dir / "analysis.md").write_text(make_analysis(comparison_rows), encoding="utf-8")
     manifest = {
-        "study_id": STUDY_ID,
+        "study_id": study_id,
         "distinct_ga_configurations": list(EXPERIMENTS),
         "models": list(MODELS),
         "runs_completed": 0,
