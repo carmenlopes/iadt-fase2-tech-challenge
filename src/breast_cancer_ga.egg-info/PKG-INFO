@@ -1,0 +1,86 @@
+Metadata-Version: 2.4
+Name: breast-cancer-ga
+Version: 0.1.0
+Summary: Otimizacao de modelos de diagnostico por algoritmo genetico
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: numpy==2.5.1
+Requires-Dist: pandas==3.0.5
+Requires-Dist: scikit-learn==1.9.0
+Requires-Dist: matplotlib==3.11.1
+
+# Tech Challenge - Fase 2: otimização de modelos de câncer de mama
+
+Continuação preservadora do projeto da Fase 1. O repositório mantém os notebooks, o CSV e as imagens originais e adiciona uma primeira versão funcional de um algoritmo genético para otimizar Regressão Logística e Árvore de Decisão.
+
+Esta etapa reproduz os baselines, faz a busca somente no conjunto de treino e registra resultados de duas execuções pequenas. Ela **não** avalia no teste os indivíduos otimizados: essa comparação final pertence aos experimentos completos posteriores.
+
+## O que foi preservado da Fase 1
+
+- `cancer-regressao-logistica.ipynb`: regressão com `StandardScaler`, ajustado apenas no treino.
+- `cancer-arvore-decisao.ipynb`: árvore e escolha de `max_depth=7` por CV no treino.
+- `comparativo.ipynb`: comparação histórica.
+- `dataset-breast-cancer/data.csv` e `img/`: dados e figuras originais.
+- Divisão estratificada 80/20 com `random_state=42`.
+- Codificação original do CSV: `M` (maligno) = `1`; `B` (benigno) = `0`.
+
+Os resultados reproduzidos coincidiram com os notebooks; não foi necessário criar um baseline metodologicamente corrigido separado. Consulte [a tabela de referência](results/phase1_baseline/reference_table.md) e o [registro completo em JSON](results/phase1_baseline/baseline_metrics.json).
+
+| Modelo | Accuracy no teste | Recall maligno | Precision maligna | F1 maligno | FN | Matriz `[[TN, FP], [FN, TP]]` |
+|---|---:|---:|---:|---:|---:|---|
+| Regressão Logística | 0,9649 | 0,9286 | 0,9750 | 0,9512 | 3 | `[[71, 1], [3, 39]]` |
+| Árvore de Decisão (`max_depth=7`) | 0,9386 | 0,8810 | 0,9487 | 0,9136 | 5 | `[[70, 2], [5, 37]]` |
+
+Esses números são do teste reservado. Não devem ser comparados como se fossem equivalentes ao fitness de CV das buscas.
+
+## Instalação no Windows PowerShell
+
+Requer Python 3.11 ou superior; esta execução foi validada com Python 3.14.6.
+
+```powershell
+py -3.14 -m venv .venv
+Set-ExecutionPolicy -Scope Process Bypass
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m pip install -e .
+```
+
+As versões diretas estão fixadas em `requirements.txt`. O `.venv`, caches e temporários são ignorados pelo Git.
+
+## Comandos
+
+Reproduzir os baselines da Fase 1:
+
+```powershell
+python scripts\reproduce_baseline.py
+```
+
+Executar os testes:
+
+```powershell
+python -m pytest
+```
+
+Executar buscas pequenas em diretórios novos (o comando se recusa a sobrescrever um diretório não vazio):
+
+```powershell
+python scripts\run_ga.py --model logistic_regression --run-id minha_logistica --population-size 8 --generations 3 --folds 5 --seed 42
+python scripts\run_ga.py --model decision_tree --run-id minha_arvore --population-size 8 --generations 3 --folds 5 --seed 42
+```
+
+Também são configuráveis `--crossover-rate`, `--mutation-rate`, `--elitism` e `--tournament-size`.
+
+## Arquitetura e proteção contra vazamento
+
+```mermaid
+flowchart LR
+    CSV[CSV original] --> Split[Split estratificado 80/20, seed 42]
+    Split --> Train[Treino]
+    Split --> Test[Teste reservado]
+    Train --> GA[Algoritmo genético]
+    GA --> CV[StratifiedKFold, seed 42]
+    CV --> Pipe[Pipeline ajustado em cada fold]
+    Pipe --> Fit[Recall maligno + métricas auxiliares]
+    Fit --> History[JSON, CSV e gráfico]
+    Test --> Baseline[Somente baseline histórico]
+```

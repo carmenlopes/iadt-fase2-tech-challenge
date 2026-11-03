@@ -1,0 +1,43 @@
+{
+  "run_id": "study_20261101",
+  "generated_at": "2026-11-02T03:43:32.454591+00:00",
+  "evaluation_complete": false,
+  "quality_target_met": false,
+  "expected_final": 8,
+  "collected_final": 0,
+  "reviewed_final": 0,
+  "pending_collection": [
+    "final_accuracy_enganosa",
+    "final_arvore_original",
+    "final_arvore_otimizada",
+    "final_baixa_precisao",
+    "final_extremos",
+    "final_logistica_original",
+    "final_logistica_otimizada",
+    "final_metricas_parciais"
+  ],
+  "pending_review": [],
+  "satisfactory": 0,
+  "satisfactory_fraction_expected": 0.0,
+  "satisfactory_fraction_reviewed": null,
+  "critical_responses": 0,
+  "mean_by_criterion": {
+    "fidelity": null,
+    "statistics": null,
+    "uncertainty": null,
+    "utility": null,
+    "clarity": null
+  },
+  "run_attempts": 2,
+  "global_attempts": 2,
+  "global_limit": 10,
+  "failures": [],
+  "limitations": [
+    "Amostra pequena de oito cenários finais, incluindo dados sintéticos.",
+    "Uma geração por caso; o estudo não mede variabilidade entre gerações da mesma entrada.",
+    "Revisão técnica e textual pela equipe; não houve revisão clínica especializada.",
+    "As notas não constituem validação clínica nem demonstram generalização."
+  ],
+  "reviewers": [],
+  "reviews": []
+}

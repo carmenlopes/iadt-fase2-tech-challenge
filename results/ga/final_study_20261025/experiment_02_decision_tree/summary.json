@@ -1,0 +1,80 @@
+{
+  "scope": "cross_validation_on_training_only",
+  "objective": "maximize_mean_malignant_recall",
+  "tie_break": [
+    "mean_f1",
+    "mean_precision"
+  ],
+  "test_set_used": false,
+  "best_genes": {
+    "max_depth": 20,
+    "min_samples_split": 19,
+    "min_samples_leaf": 14,
+    "criterion": "log_loss"
+  },
+  "best_metrics": {
+    "fitness": 0.9411764705882353,
+    "recall_mean": 0.9411764705882353,
+    "recall_std": 0.026306682088232825,
+    "precision_mean": 0.9207313195548489,
+    "precision_std": 0.041142131530757735,
+    "f1_mean": 0.9305007508116991,
+    "f1_std": 0.029528942850098144,
+    "false_negatives_mean": 2.0,
+    "false_negatives_total": 10,
+    "folds": [
+      {
+        "fold": 1,
+        "recall": 0.9705882352941176,
+        "precision": 1.0,
+        "f1": 0.9850746268656716,
+        "false_negatives": 1,
+        "true_negatives": 57,
+        "false_positives": 0,
+        "true_positives": 33
+      },
+      {
+        "fold": 2,
+        "recall": 0.9705882352941176,
+        "precision": 0.8918918918918919,
+        "f1": 0.9295774647887324,
+        "false_negatives": 1,
+        "true_negatives": 53,
+        "false_positives": 4,
+        "true_positives": 33
+      },
+      {
+        "fold": 3,
+        "recall": 0.9117647058823529,
+        "precision": 0.8857142857142857,
+        "f1": 0.8985507246376812,
+        "false_negatives": 3,
+        "true_negatives": 53,
+        "false_positives": 4,
+        "true_positives": 31
+      },
+      {
+        "fold": 4,
+        "recall": 0.9117647058823529,
+        "precision": 0.9117647058823529,
+        "f1": 0.9117647058823529,
+        "false_negatives": 3,
+        "true_negatives": 54,
+        "false_positives": 3,
+        "true_positives": 31
+      },
+      {
+        "fold": 5,
+        "recall": 0.9411764705882353,
+        "precision": 0.9142857142857143,
+        "f1": 0.927536231884058,
+        "false_negatives": 2,
+        "true_negatives": 54,
+        "false_positives": 3,
+        "true_positives": 32
+      }
+    ],
+    "warnings": []
+  },
+  "evaluation_failures": []
+}

@@ -1,0 +1,4 @@
+﻿generation,best_fitness_recall,mean_fitness_recall,std_fitness_recall,best_precision,best_f1,best_recall_std,best_false_negatives_total,best_genes,elapsed_seconds,evaluation_failures
+0,0.9,0.8801470588235294,0.016092697520764213,0.9053699813258638,0.9021598520831258,0.05455069703232768,17,"{""criterion"": ""log_loss"", ""max_depth"": 3, ""min_samples_leaf"": 12, ""min_samples_split"": 23}",1.68790249992162,0
+1,0.9,0.8933823529411765,0.006858366950800596,0.9053699813258638,0.9021598520831258,0.05455069703232768,17,"{""criterion"": ""log_loss"", ""max_depth"": 3, ""min_samples_leaf"": 12, ""min_samples_split"": 23}",1.341907300055027,0
+2,0.9,0.8970588235294118,0.00588235294117645,0.9053699813258638,0.9021598520831258,0.05455069703232768,17,"{""criterion"": ""log_loss"", ""max_depth"": 3, ""min_samples_leaf"": 12, ""min_samples_split"": 23}",1.2742103000637144,0

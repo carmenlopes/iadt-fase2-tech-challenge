@@ -1,0 +1,194 @@
+{
+  "scope": "cross_validation_on_training_only",
+  "objective": "maximize_mean_malignant_recall",
+  "tie_break": [
+    "mean_f1",
+    "mean_precision"
+  ],
+  "test_set_used": false,
+  "best_genes": {
+    "C": 0.6246283006117107,
+    "solver": "lbfgs",
+    "penalty": "l2"
+  },
+  "best_metrics": {
+    "fitness": 0.9529411764705882,
+    "recall_mean": 0.9529411764705882,
+    "recall_std": 0.03989605872426629,
+    "precision_mean": 0.9828571428571429,
+    "precision_std": 0.022857142857142864,
+    "f1_mean": 0.9668601164139776,
+    "f1_std": 0.018201264044533316,
+    "false_negatives_mean": 1.6,
+    "false_negatives_total": 8,
+    "folds": [
+      {
+        "fold": 1,
+        "recall": 1.0,
+        "precision": 0.9714285714285714,
+        "f1": 0.9855072463768116,
+        "false_negatives": 0,
+        "true_negatives": 56,
+        "false_positives": 1,
+        "true_positives": 34
+      },
+      {
+        "fold": 2,
+        "recall": 0.9705882352941176,
+        "precision": 1.0,
+        "f1": 0.9850746268656716,
+        "false_negatives": 1,
+        "true_negatives": 57,
+        "false_positives": 0,
+        "true_positives": 33
+      },
+      {
+        "fold": 3,
+        "recall": 0.9411764705882353,
+        "precision": 1.0,
+        "f1": 0.9696969696969697,
+        "false_negatives": 2,
+        "true_negatives": 57,
+        "false_positives": 0,
+        "true_positives": 32
+      },
+      {
+        "fold": 4,
+        "recall": 0.8823529411764706,
+        "precision": 1.0,
+        "f1": 0.9375,
+        "false_negatives": 4,
+        "true_negatives": 57,
+        "false_positives": 0,
+        "true_positives": 30
+      },
+      {
+        "fold": 5,
+        "recall": 0.9705882352941176,
+        "precision": 0.9428571428571428,
+        "f1": 0.9565217391304348,
+        "false_negatives": 1,
+        "true_negatives": 55,
+        "false_positives": 2,
+        "true_positives": 33
+      }
+    ],
+    "warnings": [
+      "fold 1: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+      "fold 2: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+      "fold 3: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+      "fold 4: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None.",
+      "fold 5: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', l1_ratio set to a float between 0 and 1 instead of penalty='elasticnet', and C=np.inf instead of penalty=None."
+    ]
+  },
+  "evaluation_failures": [
+    {
+      "generation": 0,
+      "genes": {
+        "C": 658.1260259148784,
+        "solver": "saga",
+        "penalty": "l2"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 1: The max_iter was reached which means the coef_ did not converge"
+    },
+    {
+      "generation": 0,
+      "genes": {
+        "C": 1288.3035345596732,
+        "solver": "liblinear",
+        "penalty": "l1"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 1: Liblinear failed to converge, increase the number of iterations."
+    },
+    {
+      "generation": 0,
+      "genes": {
+        "C": 17.056901894046504,
+        "solver": "saga",
+        "penalty": "l1"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 1: The max_iter was reached which means the coef_ did not converge"
+    },
+    {
+      "generation": 0,
+      "genes": {
+        "C": 1553.4811164603022,
+        "solver": "saga",
+        "penalty": "l2"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 1: The max_iter was reached which means the coef_ did not converge"
+    },
+    {
+      "generation": 1,
+      "genes": {
+        "C": 1.912098755370853,
+        "solver": "saga",
+        "penalty": "l1"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 1: The max_iter was reached which means the coef_ did not converge"
+    },
+    {
+      "generation": 1,
+      "genes": {
+        "C": 150.80228791832013,
+        "solver": "saga",
+        "penalty": "l2"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 1: The max_iter was reached which means the coef_ did not converge"
+    },
+    {
+      "generation": 1,
+      "genes": {
+        "C": 4.306682735144787,
+        "solver": "saga",
+        "penalty": "l1"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 1: The max_iter was reached which means the coef_ did not converge"
+    },
+    {
+      "generation": 2,
+      "genes": {
+        "C": 67.03573171035003,
+        "solver": "saga",
+        "penalty": "l1"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 1: The max_iter was reached which means the coef_ did not converge"
+    },
+    {
+      "generation": 5,
+      "genes": {
+        "C": 1.2573111592724706,
+        "solver": "saga",
+        "penalty": "l1"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 2: The max_iter was reached which means the coef_ did not converge"
+    },
+    {
+      "generation": 9,
+      "genes": {
+        "C": 281.21558736107596,
+        "solver": "saga",
+        "penalty": "l2"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 1: The max_iter was reached which means the coef_ did not converge"
+    },
+    {
+      "generation": 9,
+      "genes": {
+        "C": 8858.607754460278,
+        "solver": "saga",
+        "penalty": "l2"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 1: The max_iter was reached which means the coef_ did not converge"
+    },
+    {
+      "generation": 9,
+      "genes": {
+        "C": 0.6246283006117107,
+        "solver": "saga",
+        "penalty": "l1"
+      },
+      "error": "CandidateEvaluationError: Convergencia falhou no fold 2: The max_iter was reached which means the coef_ did not converge"
+    }
+  ]
+}

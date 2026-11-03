@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "run_id": "study_20261101",
+  "created_at": "2026-11-01T22:05:23.027982+00:00",
+  "cases_sha256": "c1da8bc1361db9d89048c50726008ae126abc6528469e376132210a0f69b6430",
+  "cases_version": 1,
+  "final_config": null,
+  "attempts": [
+    {
+      "id": "664373b90c784fd3a63bd3d1fc462c18",
+      "run_id": "study_20261101",
+      "case_id": "dev_benigno",
+      "split": "dev",
+      "started_at": "2026-11-02T03:35:52.945254+00:00",
+      "status": "success",
+      "case_sha256": "a9b40a8e473d260a43c3ba7a3e144dcd53cc951a55e2f3233905e469df40a2d6",
+      "requested_model": "gpt-4.1-mini",
+      "provider_origin": "https://api.openai.com",
+      "endpoint_sha256": "5a842ae9ce4176aed7bc9711de0f0cd7a0df287832c4f6f2c75d2a5bdf15f287",
+      "temperature": 0.2,
+      "system_prompt": "Você explica resultados de modelos de classificação relacionados a câncer de mama em português claro para profissionais de saúde. Sua função é somente explicar os dados fornecidos, não diagnosticar uma pessoa nem orientar decisões de cuidado.\n\nRegras obrigatórias:\n- Trate a classificação e as probabilidades como saída de um modelo, não como diagnóstico clínico confirmado.\n- Explique de forma concisa o que a classe e as métricas informadas permitem concluir; neste projeto, precision, recall e F1 referem-se à classe maligna, e accuracy é global. Não invente métricas, contexto, causas ou dados ausentes.\n- Indique um ou dois pontos práticos para a equipe revisar sobre desempenho e validação do modelo, por exemplo o equilíbrio entre recall e precision. Não transforme esses pontos em recomendações para um paciente.\n- Indique incerteza, limitações do modelo e que a interpretação deve ser considerada junto à avaliação profissional e ao contexto clínico.\n- Não recomende tratamento, exames, procedimentos ou condutas para um paciente.\n- Não revele nem infira dados pessoais. Se faltarem elementos, diga isso claramente.\n- Organize a resposta nas seções \"Resumo do resultado\", \"Leitura das métricas\" e \"Pontos de revisão do modelo\" e \"Limitações\". Seja objetivo, cuidadoso e não use linguagem alarmista.\n",
+      "prompt_sha256": "cbc9bd504263eb7a1c2a2ce0fb1a2a47fcd814650d006463d3ff26f347ea996e",
+      "response": "Resumo do resultado:\nO modelo classificou o caso como benigno, atribuindo 80% de probabilidade para essa classe e 20% para maligno. Isso indica que, segundo o modelo, há maior chance de ser benigno, mas não é uma certeza absoluta.\n\nLeitura das métricas:\nA acurácia geral do modelo é de 90%, o que significa que ele acerta 9 em cada 10 casos no conjunto avaliado. Para a classe maligna, a precisão, recall e F1 estão em torno de 66,7%. Isso indica que, para identificar corretamente casos malignos, o modelo tem desempenho moderado, com equilíbrio entre a capacidade de detectar malignos (recall) e a confiabilidade das classificações malignas feitas (precision).\n\nPontos de revisão do modelo:\n- O equilíbrio entre recall e precision sugere que o modelo tem desempenho razoável para a classe maligna, mas pode perder alguns casos ou apresentar falsos positivos.\n- A acurácia alta pode ser influenciada pelo número maior de casos benignos, o que deve ser considerado na avaliação do modelo.\n\nLimitações:\nEste resultado é uma previsão do modelo e não substitui avaliação clínica. A interpretação deve ser feita em conjunto com outros dados clínicos e exames. O modelo apresenta incertezas, especialmente na distinção entre benigno e maligno, e pode não capturar todas as nuances do diagnóstico real.",
+      "response_sha256": "bba6ad8681c27607bcd5cdd2269dc5fc72dfe017ed533c3faceb3b0a51dd3c3f",
+      "returned_model": "gpt-4.1-mini-2025-04-14",
+      "response_id": "chatcmpl-Efd7qEPxd21Qwf18czgU2TTMDVn8S",
+      "finish_reason": "stop",
+      "finished_at": "2026-11-02T03:35:56.606708+00:00",
+      "duration_seconds": 3.6528662000000622
+    },
+    {
+      "id": "703b3d08e32c47c2ba58e51ff004a974",
+      "run_id": "study_20261101",
+      "case_id": "dev_maligno",
+      "split": "dev",
+      "started_at": "2026-11-02T03:35:56.618039+00:00",
+      "status": "success",
+      "case_sha256": "aea9a918ac3c343bf8b33c30cc132787f9fafe6efdbd0da4182ce3a7a2565c0a",
+      "requested_model": "gpt-4.1-mini",
+      "provider_origin": "https://api.openai.com",
+      "endpoint_sha256": "5a842ae9ce4176aed7bc9711de0f0cd7a0df287832c4f6f2c75d2a5bdf15f287",
+      "temperature": 0.2,
+      "system_prompt": "Você explica resultados de modelos de classificação relacionados a câncer de mama em português claro para profissionais de saúde. Sua função é somente explicar os dados fornecidos, não diagnosticar uma pessoa nem orientar decisões de cuidado.\n\nRegras obrigatórias:\n- Trate a classificação e as probabilidades como saída de um modelo, não como diagnóstico clínico confirmado.\n- Explique de forma concisa o que a classe e as métricas informadas permitem concluir; neste projeto, precision, recall e F1 referem-se à classe maligna, e accuracy é global. Não invente métricas, contexto, causas ou dados ausentes.\n- Indique um ou dois pontos práticos para a equipe revisar sobre desempenho e validação do modelo, por exemplo o equilíbrio entre recall e precision. Não transforme esses pontos em recomendações para um paciente.\n- Indique incerteza, limitações do modelo e que a interpretação deve ser considerada junto à avaliação profissional e ao contexto clínico.\n- Não recomende tratamento, exames, procedimentos ou condutas para um paciente.\n- Não revele nem infira dados pessoais. Se faltarem elementos, diga isso claramente.\n- Organize a resposta nas seções \"Resumo do resultado\", \"Leitura das métricas\" e \"Pontos de revisão do modelo\" e \"Limitações\". Seja objetivo, cuidadoso e não use linguagem alarmista.\n",
+      "prompt_sha256": "cbc9bd504263eb7a1c2a2ce0fb1a2a47fcd814650d006463d3ff26f347ea996e",
+      "response": "Resumo do resultado:\nO modelo classificou a amostra como pertencente à classe maligna, com uma probabilidade estimada de 85% para malignidade e 15% para benignidade. \n\nLeitura das métricas:\nA acurácia geral do modelo é de 80%, indicando que ele acerta 8 em cada 10 casos. Para a classe maligna, a precisão (precision) é 75%, o que significa que, entre as vezes que o modelo indicou malignidade, 75% estavam corretas. O recall de 75% indica que o modelo identificou corretamente 75% dos casos malignos presentes. O F1-score, que combina precisão e recall, também é 75%, refletindo um equilíbrio entre esses dois aspectos.\n\nPontos de revisão do modelo:\n- O equilíbrio entre precisão e recall sugere que o modelo tem desempenho consistente na detecção da classe maligna, mas há espaço para melhorar tanto a identificação correta quanto a redução de falsos positivos.\n- A acurácia global de 80% é razoável, porém a avaliação deve considerar o impacto clínico dos erros, especialmente falsos negativos.\n\nLimitações:\nEste resultado é uma estimativa do modelo e não substitui avaliação clínica. A interpretação deve ser feita em conjunto com outros dados clínicos e exames. O modelo pode apresentar incertezas e limitações, como possíveis vieses nos dados de treinamento ou variações na apresentação dos casos.",
+      "response_sha256": "951abf452244ae592926184a389117cec51a0284b0eb3632149a11d3dc438a17",
+      "returned_model": "gpt-4.1-mini-2025-04-14",
+      "response_id": "chatcmpl-Efd7tMl2rE9oldoxQi1jbaG9Q7df5",
+      "finish_reason": "stop",
+      "finished_at": "2026-11-02T03:35:59.089124+00:00",
+      "duration_seconds": 2.462337799999659
+    }
+  ],
+  "limitations": [
+    "Amostra pequena de oito cenários finais, incluindo dados sintéticos.",
+    "Uma geração por caso; o estudo não mede variabilidade entre gerações da mesma entrada.",
+    "Revisão técnica e textual pela equipe; não houve revisão clínica especializada.",
+    "As notas não constituem validação clínica nem demonstram generalização."
+  ],
+  "global_attempts_used": 2,
+  "global_attempt_limit": 10,
+  "updated_at": "2026-11-02T03:45:51.383600+00:00",
+  "protocol": {
+    "version": 1,
+    "dev_cases": 2,
+    "final_cases": 8,
+    "generations_per_case": 1,
+    "criteria": [
+      "fidelity",
+      "statistics",
+      "uncertainty",
+      "utility",
+      "clarity"
+    ],
+    "score_values": [
+      0,
+      1,
+      2
+    ],
+    "critical_flags": [
+      "invented_results",
+      "statistical_inversion",
+      "confirmed_diagnosis",
+      "patient_advice"
+    ],
+    "response_threshold": 8,
+    "study_threshold": 0.9,
+    "human_review_required": true
+  },
+  "protocol_sha256": "5c0225deb21437d43a22c6f5c6eb152979c1e1bd071dfd4fed04a7e8c7094680"
+}

@@ -1,0 +1,80 @@
+{
+  "scope": "cross_validation_on_training_only",
+  "objective": "maximize_mean_malignant_recall",
+  "tie_break": [
+    "mean_f1",
+    "mean_precision"
+  ],
+  "test_set_used": false,
+  "best_genes": {
+    "max_depth": 3,
+    "min_samples_split": 23,
+    "min_samples_leaf": 12,
+    "criterion": "log_loss"
+  },
+  "best_metrics": {
+    "fitness": 0.9,
+    "recall_mean": 0.9,
+    "recall_std": 0.05455069703232768,
+    "precision_mean": 0.9053699813258638,
+    "precision_std": 0.03374922858199893,
+    "f1_mean": 0.9021598520831258,
+    "f1_std": 0.03956753213604978,
+    "false_negatives_mean": 3.4,
+    "false_negatives_total": 17,
+    "folds": [
+      {
+        "fold": 1,
+        "recall": 0.8823529411764706,
+        "precision": 0.9375,
+        "f1": 0.9090909090909091,
+        "false_negatives": 4,
+        "true_negatives": 55,
+        "false_positives": 2,
+        "true_positives": 30
+      },
+      {
+        "fold": 2,
+        "recall": 1.0,
+        "precision": 0.9444444444444444,
+        "f1": 0.9714285714285714,
+        "false_negatives": 0,
+        "true_negatives": 55,
+        "false_positives": 2,
+        "true_positives": 34
+      },
+      {
+        "fold": 3,
+        "recall": 0.8529411764705882,
+        "precision": 0.90625,
+        "f1": 0.8787878787878788,
+        "false_negatives": 5,
+        "true_negatives": 54,
+        "false_positives": 3,
+        "true_positives": 29
+      },
+      {
+        "fold": 4,
+        "recall": 0.8529411764705882,
+        "precision": 0.8529411764705882,
+        "f1": 0.8529411764705882,
+        "false_negatives": 5,
+        "true_negatives": 52,
+        "false_positives": 5,
+        "true_positives": 29
+      },
+      {
+        "fold": 5,
+        "recall": 0.9117647058823529,
+        "precision": 0.8857142857142857,
+        "f1": 0.8985507246376812,
+        "false_negatives": 3,
+        "true_negatives": 53,
+        "false_positives": 4,
+        "true_positives": 31
+      }
+    ],
+    "warnings": []
+  },
+  "evaluation_failures": []
+}

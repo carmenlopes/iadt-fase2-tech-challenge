@@ -1,0 +1,29 @@
+{
+  "ga": {
+    "model": "logistic_regression",
+    "seed": 44,
+    "population_size": 32,
+    "generations": 16,
+    "crossover_rate": 0.9,
+    "mutation_rate": 0.15,
+    "elitism": 3,
+    "folds": 5,
+    "tournament_size": 5
+  },
+  "study_id": "final_study_20261025",
+  "experiment": {
+    "name": "experiment_03",
+    "population_size": 32,
+    "generations": 16,
+    "seed": 44,
+    "crossover_rate": 0.9,
+    "mutation_rate": 0.15,
+    "elitism": 3,
+    "tournament_size": 5
+  },
+  "dataset_sha256": "1425d9affa78ba8e53afc81d0ef8a19069ee10c4b21fe89b3cf514071b12ee33",
+  "train_rows": 455,
+  "test_rows_reserved": 114,
+  "test_used_by_ga": false,
+  "selection_metrics_source": "stratified_5_fold_cv_on_training_only"
+}
